@@ -1,0 +1,24 @@
+# Terraform
+.terraform/
+
+# Generated artifacts
+config-map-aws-auth*
+kubeconfig*
+
+# System/IDE files
+.DS_Store
+.idea
+
+# Dependencies
+node_modules
+
+# Generated code
+bin
+dist/
+.vscode/
+app/build/
+server/public/
+public/
+data/
+
+.history

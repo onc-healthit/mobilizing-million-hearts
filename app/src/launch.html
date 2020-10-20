@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>ASCVD Launch</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.6.9/core.min.js"></script>
+    <script>
+      if (!Array.prototype.fill) {
+        Object.defineProperty(Array.prototype, 'fill', {
+          value: function(value) {
+            // Steps 1-2.
+            if (this == null) {
+              throw new TypeError('this is null or not defined');
+            }
+
+            var O = Object(this);
+
+            // Steps 3-5.
+            var len = O.length >>> 0;
+
+            // Steps 6-7.
+            var start = arguments[1];
+            var relativeStart = start >> 0;
+
+            // Step 8.
+            var k = relativeStart < 0 ? Math.max(len + relativeStart, 0) : Math.min(relativeStart, len);
+
+            // Steps 9-10.
+            var end = arguments[2];
+            var relativeEnd = end === undefined ? len : end >> 0;
+
+            // Step 11.
+            var final = relativeEnd < 0 ? Math.max(len + relativeEnd, 0) : Math.min(relativeEnd, len);
+
+            // Step 12.
+            while (k < final) {
+              O[k] = value;
+              k++;
+            }
+
+            // Step 13.
+            return O;
+          },
+        });
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.min.js"></script>
+  </head>
+  <body>
+    <script>
+      // The ISS is the URL of the FHIR server you will query
+
+      // Dev "Open FHIR servers"
+      // iss: 'https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/',
+      // iss: 'http://hapi.fhir.org/baseDstu2/',
+      clientId = <%= JSON.stringify(htmlWebpackPlugin.options.config.clientId) %>;
+
+      // See http://hl7.org/fhir/smart-app-launch/scopes-and-launch-context/index.html for different scopes
+      // sandboxcerner.com does not support wildcard Scoping either!
+      scope = <%= JSON.stringify(htmlWebpackPlugin.options.config.scope) %>;
+
+      // Prod. Behind SMART on FHIR
+      iss = <%= JSON.stringify(htmlWebpackPlugin.options.config.iss) %>;
+
+      redirectUri = <%= JSON.stringify(htmlWebpackPlugin.options.config.redirectUri) %>;
+
+      var url = new URL(location.href);
+      if (!url.searchParams.has('launch') || !url.searchParams.has('iss')) {
+        url.searchParams.set('launch', 'eyJhIjoiMSIsImciOiIxIn0');
+        url.searchParams.set('iss', iss);
+        document.body.innerHTML =
+          '<a href="' + url.href + '">Click here to simulate EHR launch</a>';
+      } else {
+        FHIR.oauth2.authorize({
+          // The client_id that you should have obtained after registering a client at
+          // the EHR.
+          clientId: clientId,
+
+          // The scopes that you request from the EHR
+          scope: scope,
+
+          // Typically, if your redirectUri points to the root of the current directory
+          // (where the launchUri is), you can omit this option because the default
+          // value is ".". However, some servers (like this one) do not support directory
+          // indexes so "." and "./" will not automatically map to the "index.html" file
+          // in that directory.
+
+          redirectUri: redirectUri,
+        });
+      }
+    </script>
+  </body>
+</html>

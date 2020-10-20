@@ -1,0 +1,16 @@
+{
+  "extends": ["airbnb", "prettier"],
+  "plugins": ["prettier"],
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "rules": {
+    "max-len": ["error", { "ignoreComments": true, "tabWidth": 2, "code": 100, "ignoreStrings": true }],
+    "import/no-dynamic-require": 0,
+    "global-require": 0
+  }
+}

@@ -1,0 +1,19 @@
+.line-bottom {
+  border-bottom: 1px solid rgb(146, 146, 146);
+}
+.line-left {
+  border-left: 1px solid rgb(146, 146, 146);
+}
+
+.tooltip {
+  max-width: 600px;
+}
+
+.tooltip-inner {
+  max-width: 600px;
+  text-align: left;
+}
+
+.fa-question-circle {
+  color: green;
+}

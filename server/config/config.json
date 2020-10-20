@@ -1,0 +1,23 @@
+{
+	"development": {
+		"dialect": "sqlite",
+		"storage": "../data/database.sqlite3",
+		"publicPath": "../public",
+		"port": "3000",
+		"logLevel": "info"
+	},
+	"production": {
+		"dialect": "sqlite",
+		"storage": "../data/database.sqlite3",
+		"publicPath": "../public",
+		"port": "3000",
+		"logLevel": "info"
+	},
+	"test": {
+		"dialect": "sqlite",
+		"storage": ":memory",
+		"publicPath": "../public",
+		"port": "3000",
+		"logLevel": "info"
+	}
+}
