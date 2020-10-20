@@ -3,7 +3,7 @@ const container = require('../../lib/winston');
 
 const logger = container.get('console');
 
-exports.create = async auditevent => {
+exports.create = async (auditevent) => {
 	let results;
 	let err;
 	try {
