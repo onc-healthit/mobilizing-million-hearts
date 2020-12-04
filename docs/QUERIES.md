@@ -22,3 +22,7 @@ application to work properly.
 ```
 /MedicationStatement?patient=<patientId>&status=active,intended
 ```
+
+# Up Next
+
+- [Learn about what the team didn't have time to do, but want to in the future](./FUTURE.md)
