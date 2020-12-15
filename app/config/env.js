@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const paths = require('./paths');
-const dotenv = require('dotenv');
+const shell = require('shelljs');
 
 // Make sure that including paths.js after env.js will read .env variables.
 delete require.cache[require.resolve('./paths')];
@@ -86,6 +86,9 @@ function getClientEnvironment(publicUrl) {
 				ENABLE_DEVELOPERS_LOG: process.env.ENABLE_DEVELOPERS_LOG,
 				BLOODPRESSURE_CUTOFF: process.env.BLOODPRESSURE_CUTOFF,
 				CHOLESTEROL_CUTOFF: process.env.CHOLESTEROL_CUTOFF,
+
+				// Other Values
+				LAST_COMMIT_DATE: process.env.LAST_COMMIT,
 			}
 		);
 	// Stringify all values so we can feed into Webpack DefinePlugin
