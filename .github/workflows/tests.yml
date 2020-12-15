@@ -1,0 +1,50 @@
+name: Hearts - Tests
+
+on:
+  push:
+
+env:
+  NODE_ENV: TEST
+
+jobs:
+  app-test:
+    name: Run Jest tests
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install
+        working-directory: ./app
+        run: yarn install
+      - name: Test
+        working-directory: ./app
+        run: yarn test
+
+  server-test:
+    name: Run Jest tests
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install
+        working-directory: ./server
+        run: npm install
+      - name: Test
+        working-directory: ./server
+        run: npm test
