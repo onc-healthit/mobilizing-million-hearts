@@ -281,6 +281,26 @@ export default class Estimator extends Component {
 								<FormElement name="Statin:" value={statin} />
 								<FormElement name="Aspirin Therapy:" value={aspirin} />
 							</HalfGroup>
+							<HalfGroup>
+								<div
+									style={{
+										display: 'flex',
+										flexDirection: 'column',
+										justifyContent: 'center',
+										alignItems: 'center',
+										height: '100%',
+									}}
+								>
+									<button
+										type="button"
+										onClick={this.props.goToEducator}
+										className="ml-2 btn btn-primary"
+										style={{ fontSize: '14px' }}
+									>
+										Patient Risk Education Tool
+									</button>
+								</div>
+							</HalfGroup>
 						</div>
 					</div>
 					<div className="col-md-4 line-left pl-3 pt-3">
@@ -314,16 +334,6 @@ export default class Estimator extends Component {
 							style={{ padding: 0 }}
 						>
 							<h4 style={{ fontSize: '16px' }}>MedStar Guidelines</h4>
-						</button>
-					</div>
-					<div className="col-md-2 pt-2" style={{ textAlign: 'center' }}>
-						<button
-							type="button"
-							onClick={this.props.goToEducator}
-							className="btn btn-link"
-							style={{ padding: 0 }}
-						>
-							<h4 style={{ fontSize: '16px' }}>ASCVD Risk Educator</h4>
 						</button>
 					</div>
 					{feedback ? (
