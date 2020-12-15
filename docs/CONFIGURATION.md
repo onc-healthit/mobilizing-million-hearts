@@ -23,3 +23,7 @@ SCOPE=patient/Patient.read patient/Observation.read patient/MedicationOrder.read
 ISS=https://your fhir server/
 REDIRECT_URI=http://where your app is deployed/
 ```
+
+# Up Next
+
+- [Learn about the different Resources the application consumes](./RESOURCES.md)

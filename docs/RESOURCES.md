@@ -23,3 +23,7 @@ ASCVD obtains everything needed to calculate risk from the following Resources.
 | diastolyicBloodPressure | Observation            |
 | statin                  | MedicationStatement    |
 | aspirin                 | MedicationStatement    |
+
+# Up Next
+
+- [Learn about what FHIR queries the applications executes](./QUERIES.md)

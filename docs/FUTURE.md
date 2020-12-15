@@ -1,4 +1,4 @@
-# Future optimization and features
+# Future optimization and features the team ahs considered
 
 ## Health Recommendations
 
@@ -10,11 +10,8 @@ After calculating a score, the option to write-back to the FHIR server should be
 
 ## CDS Hooks
 
-The application should be offered to user's from the EHRs CDS Hooks capabilities
+The application should be offered to user's from the EHRs CDS Hooks capabilities when a given ASCVD score is deemed too high or too low.
 
-## Query Optimizations
+# Up Next
 
-An investigation should be performed to explore the use of `_sort` and `_count` in order to
-prevent the need to select all of a Patient's Observations/Conditions/MedicalStatements.
-Currently, it is necessary to select all resources and follow all pages because there is no
-`_sort` filter being applied.
+That's all for now. [Back to Home.](./INDEX.md)

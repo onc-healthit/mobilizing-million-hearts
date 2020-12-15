@@ -60,18 +60,23 @@ Code](https://code.cerner.com/developer/smart-on-fhir/).
 
    ```
    cd server
+   yarn install
+   yarn migrate
    yarn start
    ```
 
-7. Launch the App from a SMART on FHIR portal
+7. Build the application
+
+```sh
+yarn install
+yarn build
+```
+
+8. Launch the App from a SMART on FHIR portal
 
 Because this app is a compiled React SPA, you must rebuild it on
 any change to the code. The server is configured to have its public path
 in the build location.
-
-```sh
-$ yarn build
-```
 
 ### Or: Use docker-compose
 

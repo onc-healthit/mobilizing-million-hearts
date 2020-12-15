@@ -8,7 +8,7 @@
 		"start:prod": "NODE_ENV=production node scripts/serve",
 		"prettier": "prettier \"**/*.+(js|scss)\" --write",
 		"test": "jest --verbose",
-		"migrate": "node_modules/.bin/sequelize db:migrate",
+		"migrate": "mkdir -p ../data && node_modules/.bin/sequelize db:migrate",
 		"lint": "eslint \"src/**/*.js\""
 	},
 	"jest": {
