@@ -32,6 +32,12 @@ const pages = {
 	developerLog: 'DeveloperLog',
 };
 
+const titles = {
+	Educator: 'Patient Risk Educator',
+	Estimator: 'ASCVD Risk Estimator',
+	DeveloperLog: 'Developer Log',
+};
+
 const unpackAuditInformationFromClient = (client) => {
 	const { id: patient } = client.patient;
 	const { tokenResponse } = client.state;
@@ -164,12 +170,12 @@ class App extends React.Component {
 
 	render() {
 		const { page, loading, errored, developerInfo } = this.state;
-		const title = `ASCVD Risk ${page}`;
+		const title = titles[page];
 
 		let pageToRender;
 		let log;
 
-		// Have to manage what "page" we are on manually, as we cannot use a Router
+		// Have to manage what "page" we are on manually, as we cannot use a Router in the EHR
 		if (page === pages.estimator) {
 			pageToRender = (
 				<Estimator

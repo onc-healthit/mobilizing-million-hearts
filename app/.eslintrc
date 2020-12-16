@@ -27,13 +27,14 @@
     "no-unneeded-ternary": "off", // Ternary is good
     "class-methods-use-this": "off",
     "react/jsx-fragments": "off", // Not all environments support this yet
-    "react/destructuring-assignment": "warn",
+    "react/destructuring-assignment": "off",
     "react/no-unused-state": "warn",
-    "no-nested-ternary": "warn",
+    "no-nested-ternary": "off",
     "react/no-string-refs": "off",
     "react/no-did-update-set-state": "off",
     "react/jsx-props-no-spreading": "off",
     "import/no-dynamic-require": "off",
-    "no-restricted-globals": "off" // For isNan
+    "no-restricted-globals": "off", // For isNan
+    "no-param-reassign": "off",
   }
 }

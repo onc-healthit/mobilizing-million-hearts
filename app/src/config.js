@@ -31,4 +31,6 @@ module.exports = {
 		developerLog: process.env.ENABLE_DEVELOPERS_LOG === 'true' || false,
 		feedback: true,
 	},
+
+	gitLastUpdated: process.env.GIT_LAST_UPDATED || new Date().toString(),
 };
