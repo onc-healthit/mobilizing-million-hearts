@@ -27,12 +27,27 @@ following variables are configurable.
 
 An example `.env` file might like this:
 
+```sh
+touch `app/.env`
+```
+
 ```
 CLIENT_ID=your-client-id
 SCOPE=patient/Patient.read patient/Observation.read patient/MedicationOrder.read patient/MedicationStatement.read patient/MedicationAdministration.read patient/Condition.read patient/DocumentReference.read patient/DocumentReference.write
 ISS=https://your-fhir-server/
 REDIRECT_URI=http://where-your-app-is-deployed/
 ```
+
+The server also offers some configuration to be more flexible in different situations. Create a `.env` file in the server directory.
+
+```sh
+touch `server/.env`
+```
+
+| NAME       | REQUIRED | DEFAULT VALUE               |
+| ---------- | -------- | --------------------------- |
+| DB_STORAGE | no       | ../../data/database.sqlite3 |
+| NODE_ENV   | no       | development                 |
 
 ### How to Build and Run
 
