@@ -5,7 +5,6 @@
 	"license": "MIT",
 	"scripts": {
 		"start": "node scripts/serve",
-		"start:prod": "NODE_ENV=production node scripts/serve",
 		"prettier": "prettier \"**/*.+(js|scss)\" --write",
 		"test": "jest --verbose",
 		"migrate": "mkdir -p ../data && node_modules/.bin/sequelize db:migrate",

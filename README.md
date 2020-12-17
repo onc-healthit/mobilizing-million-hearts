@@ -20,7 +20,7 @@ following variables are configurable.
 | SCOPE                 | yes      |               |
 | ISS                   | yes      |               |
 | REDIRECT_URI          | yes      |               |
-| DISABLE_AUDITING      | no       | true          |
+| AUDITING              | no       | false         |
 | ENABLE_DEVELOPERS_LOG | no       | false         |
 | BLOODPRESSURE_CUTOFF  | no       | 5             |
 | CHOLESTEROL_CUTOFF    | no       | 5             |
