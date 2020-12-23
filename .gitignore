@@ -22,4 +22,9 @@ public/
 !app/public
 data/
 
+# VSCode History plugins
 .history
+
+# Databse and source code ZIPs
+*.sqlite*
+ascvd.zip

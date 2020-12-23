@@ -36,7 +36,7 @@ const formatDate = (date) => {
 		day = `0${day}`;
 	}
 
-	return [year, month, day].join('-');
+	return [month, day, year].join('/');
 };
 
 export default class Estimator extends Component {
@@ -134,7 +134,7 @@ export default class Estimator extends Component {
 				<p>
 					The patient’s ASCVD risk score was calculated during the exam using the ACC’s ASCVD Risk
 					Estimator Plus. The patient’s risk score was found to be {this.props.risk}, indicating a{' '}
-					{this.props.riskText} level of 10 year ASCVD risk.
+					{this.props.riskText} level of 10 year ASCVD risk. TMP
 				</p>
 			</div>
 		) : null;
@@ -299,26 +299,6 @@ export default class Estimator extends Component {
 								<FormElement name="Statin:" value={statin} />
 								<FormElement name="Aspirin Therapy:" value={aspirin} />
 							</HalfGroup>
-							<HalfGroup>
-								<div
-									style={{
-										display: 'flex',
-										flexDirection: 'column',
-										justifyContent: 'center',
-										alignItems: 'center',
-										height: '100%',
-									}}
-								>
-									<button
-										type="button"
-										onClick={this.props.goToEducator}
-										className="ml-2 btn btn-primary"
-										style={{ fontSize: '14px' }}
-									>
-										Patient Risk Education Tool
-									</button>
-								</div>
-							</HalfGroup>
 						</div>
 					</div>
 					<div className="col-md-4 line-left pl-3 pt-3">
@@ -330,7 +310,21 @@ export default class Estimator extends Component {
 								backgroundColor={this.props.backgroundColor}
 							/>
 						</div>
-						{!this.props.loading ? infoText : null}
+						{!this.props.loading ? (
+							<>
+								{infoText}
+								<div style={{ display: 'flex', justifyContent: 'center' }}>
+									<button
+										type="button"
+										onClick={this.props.goToEducator}
+										className="ml-2 btn btn-primary"
+										style={{ fontSize: '18px' }}
+									>
+										Patient Risk Education Tool
+									</button>
+								</div>
+							</>
+						) : null}
 					</div>
 				</div>
 				<div className="row">
@@ -367,9 +361,9 @@ export default class Estimator extends Component {
 						</div>
 					) : null}
 					<div className="col-md-2 pt-2" style={{ textAlign: 'center' }}>
-						<h4 style={{ fontSize: '12px' }}>
-							ASCVD calc was last updated according to ACC guidelines on{' '}
-							{formatDate(gitLastUpdatedDate)}
+						<h4 style={{ fontSize: '14px' }}>
+							Calculations are made based on ACC guidelines. Last updated on{' '}
+							{formatDate(gitLastUpdatedDate)}.
 						</h4>
 					</div>
 				</div>
