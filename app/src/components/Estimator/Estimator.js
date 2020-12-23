@@ -134,7 +134,7 @@ export default class Estimator extends Component {
 				<p>
 					The patient’s ASCVD risk score was calculated during the exam using the ACC’s ASCVD Risk
 					Estimator Plus. The patient’s risk score was found to be {this.props.risk}, indicating a{' '}
-					{this.props.riskText} level of 10 year ASCVD risk. TMP
+					{this.props.riskText} level of 10 year ASCVD risk.
 				</p>
 			</div>
 		) : null;
