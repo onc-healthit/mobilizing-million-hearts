@@ -1,8 +1,7 @@
 {
-	"name": "ascvd-server",
+	"name": "hearts-server",
 	"version": "1.2.1",
-	"main": "index.js",
-	"license": "MIT",
+	"main": "src/main.js",
 	"scripts": {
 		"start": "node scripts/serve",
 		"prettier": "prettier \"**/*.+(js|scss)\" --write",

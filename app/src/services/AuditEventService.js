@@ -9,6 +9,8 @@ export default class AuditEventService {
 
 	create(name, additionalFields) {
 		const payload = { name, ...this.auditInformation, ...additionalFields };
+
+		// Only post audit events if this feature is enabled
 		if (auditing) {
 			return fetch('/api/auditevent', {
 				method: 'POST',
@@ -19,6 +21,7 @@ export default class AuditEventService {
 			}).then((res) => res.json());
 		}
 
+		// else, return a resolved promise
 		return Promise.resolve();
 	}
 }

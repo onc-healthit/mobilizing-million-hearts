@@ -1,7 +1,6 @@
 {
-	"name": "ascvd",
+	"name": "hearts",
 	"version": "1.2.1",
-	"private": true,
 	"dependencies": {
 		"@babel/core": "7.6.0",
 		"@fortawesome/fontawesome-free": "^5.12.1",
