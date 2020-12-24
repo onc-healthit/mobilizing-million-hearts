@@ -20,12 +20,16 @@ following variables are configurable.
 | SCOPE                 | yes      |               |
 | ISS                   | yes      |               |
 | REDIRECT_URI          | yes      |               |
-| DISABLE_AUDITING      | no       | true          |
+| AUDITING              | no       | false         |
 | ENABLE_DEVELOPERS_LOG | no       | false         |
 | BLOODPRESSURE_CUTOFF  | no       | 5             |
 | CHOLESTEROL_CUTOFF    | no       | 5             |
 
 An example `.env` file might like this:
+
+```sh
+touch `app/.env`
+```
 
 ```
 CLIENT_ID=your-client-id
@@ -33,6 +37,17 @@ SCOPE=patient/Patient.read patient/Observation.read patient/MedicationOrder.read
 ISS=https://your-fhir-server/
 REDIRECT_URI=http://where-your-app-is-deployed/
 ```
+
+The server also offers some configuration to be more flexible in different situations. Create a `.env` file in the server directory.
+
+```sh
+touch `server/.env`
+```
+
+| NAME       | REQUIRED | DEFAULT VALUE               |
+| ---------- | -------- | --------------------------- |
+| DB_STORAGE | no       | ../../data/database.sqlite3 |
+| NODE_ENV   | no       | development                 |
 
 ### How to Build and Run
 

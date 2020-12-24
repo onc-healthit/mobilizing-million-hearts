@@ -116,8 +116,9 @@ export default class RiskService {
 		const queries = allCodes
 			.map(({ system, codes }) => this.buildCodeQuery(system, codes))
 			.join(',');
+
 		return Promise.all([
-			this.getResourceByPatient(OBSERVATION, patientId),
+			this.getResourceByPatient(OBSERVATION, patientId, [{ name: 'code', value: queries }]),
 			this.getSocialHistory(patientId),
 		]).then((results) => {
 			const [observations, socialHistory] = results;
@@ -569,7 +570,6 @@ export default class RiskService {
 
 	getValueQuantityFromEntry(entry) {
 		const foundValue = _.get(entry, 'resource.valueQuantity.value');
-		const unit = _.get(entry, 'resource.valueQuantity.unit');
 
 		if (foundValue) {
 			return {

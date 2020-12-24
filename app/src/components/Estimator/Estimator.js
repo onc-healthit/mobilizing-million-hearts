@@ -10,7 +10,7 @@ import Feedback from '../Feedback/Feedback';
 import MissingFields from '../MissingFields/MissingFields';
 import RiskCard from '../RiskCard/RiskCard';
 
-import { features } from '../../config';
+import { features, gitLastUpdated } from '../../config';
 import { VALIDATION } from '../../common/constants';
 
 const { feedback } = features;
@@ -22,6 +22,21 @@ const get = (obj, path, otherwise) => {
 
 const notNullOrUndefined = (val) => {
 	return val !== undefined && val !== null;
+};
+
+const formatDate = (date) => {
+	let month = `${date.getMonth() + 1}`;
+	let day = `${date.getDate()}`;
+	const year = date.getFullYear();
+
+	if (month.length < 2) {
+		month = `0${month}`;
+	}
+	if (day.length < 2) {
+		day = `0${day}`;
+	}
+
+	return [month, day, year].join('/');
 };
 
 export default class Estimator extends Component {
@@ -74,6 +89,9 @@ export default class Estimator extends Component {
 
 	render() {
 		const { patientInfo, submitUserFeedback, loading } = this.props;
+
+		const gitLastUpdatedDate = new Date(gitLastUpdated);
+
 		const missingValue = '--';
 
 		const systolic = get(patientInfo, 'systolicBloodPressure.value', missingValue);
@@ -292,7 +310,21 @@ export default class Estimator extends Component {
 								backgroundColor={this.props.backgroundColor}
 							/>
 						</div>
-						{!this.props.loading ? infoText : null}
+						{!this.props.loading ? (
+							<>
+								{infoText}
+								<div style={{ display: 'flex', justifyContent: 'center' }}>
+									<button
+										type="button"
+										onClick={this.props.goToEducator}
+										className="ml-2 btn btn-primary"
+										style={{ fontSize: '18px' }}
+									>
+										Patient Risk Education Tool
+									</button>
+								</div>
+							</>
+						) : null}
 					</div>
 				</div>
 				<div className="row">
@@ -316,16 +348,6 @@ export default class Estimator extends Component {
 							<h4 style={{ fontSize: '16px' }}>MedStar Guidelines</h4>
 						</button>
 					</div>
-					<div className="col-md-2 pt-2" style={{ textAlign: 'center' }}>
-						<button
-							type="button"
-							onClick={this.props.goToEducator}
-							className="btn btn-link"
-							style={{ padding: 0 }}
-						>
-							<h4 style={{ fontSize: '16px' }}>ASCVD Risk Educator</h4>
-						</button>
-					</div>
 					{feedback ? (
 						<div className="col-md-2 pt-2" style={{ textAlign: 'center' }}>
 							<button
@@ -338,6 +360,12 @@ export default class Estimator extends Component {
 							</button>
 						</div>
 					) : null}
+					<div className="col-md-2 pt-2" style={{ textAlign: 'center' }}>
+						<h4 style={{ fontSize: '14px' }}>
+							Calculations are made based on ACC guidelines. Last updated on{' '}
+							{formatDate(gitLastUpdatedDate)}.
+						</h4>
+					</div>
 				</div>
 			</React.Fragment>
 		);

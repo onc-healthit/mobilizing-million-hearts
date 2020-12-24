@@ -1,7 +1,16 @@
 const fs = require('fs');
 const path = require('path');
+const shell = require('shelljs');
 const paths = require('./paths');
-const dotenv = require('dotenv');
+
+let gitLastUpdated;
+if (!shell.which('git')) {
+	console.log(
+		'Warning: You are running this without git installed. The notice of when that App was last updated may not work properly'
+	);
+} else {
+	gitLastUpdated = shell.exec('git log -1 --format=%cd').stdout;
+}
 
 // Make sure that including paths.js after env.js will read .env variables.
 delete require.cache[require.resolve('./paths')];
@@ -86,6 +95,9 @@ function getClientEnvironment(publicUrl) {
 				ENABLE_DEVELOPERS_LOG: process.env.ENABLE_DEVELOPERS_LOG,
 				BLOODPRESSURE_CUTOFF: process.env.BLOODPRESSURE_CUTOFF,
 				CHOLESTEROL_CUTOFF: process.env.CHOLESTEROL_CUTOFF,
+
+				// Other Values
+				GIT_LAST_UPDATED: gitLastUpdated,
 			}
 		);
 	// Stringify all values so we can feed into Webpack DefinePlugin

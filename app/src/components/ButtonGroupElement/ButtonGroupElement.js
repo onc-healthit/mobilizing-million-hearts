@@ -2,13 +2,6 @@ import React, { Component } from 'react';
 import { ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 
 export default class ButtonGroupElement extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			selected: props.selected,
-		};
-	}
-
 	async callback(newValue) {
 		const { name, audit, cb, selected } = this.props;
 		const options = {
