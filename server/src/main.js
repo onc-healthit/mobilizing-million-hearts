@@ -28,13 +28,15 @@ logger.info(`Environment: ${env}`);
  * @function main
  */
 module.exports = function main() {
-	const { port: portConfig, publicPath } = config;
+	const { port: portConfig, publicPath, storage } = config;
 
 	logger.info(`Initializing ${appName}`);
 
-	const fullPath = path.resolve(__dirname, publicPath);
+	logger.info(`Database location: ${path.resolve(__dirname, storage)}`);
 
-	logger.info(`App path ${publicPath}`);
+	const fullPath = path.join(__dirname, publicPath);
+
+	logger.info(`Public path ${fullPath}`);
 
 	const server = new Server()
 		.configureMiddleware()
