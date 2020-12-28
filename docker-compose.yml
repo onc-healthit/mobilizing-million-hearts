@@ -1,9 +1,7 @@
 version: '3'
 services:
-  ascvd:
-    image: ascvd
-    volumes:
-      - './data/:/usr/src/app/data'
+  hearts:
+    image: hearts
     build:
       context: .
       dockerfile: Dockerfile

@@ -1,13 +1,14 @@
 {
 	"name": "hearts-server",
 	"version": "1.2.1",
+	"license": "MIT",
 	"main": "src/main.js",
 	"scripts": {
-		"start": "node scripts/serve",
-		"prettier": "prettier \"**/*.+(js|scss)\" --write",
-		"test": "jest --verbose",
+		"lint": "eslint \"src/**/*.js\"",
 		"migrate": "mkdir -p ../data && node_modules/.bin/sequelize db:migrate",
-		"lint": "eslint \"src/**/*.js\""
+		"prettier": "prettier \"**/*.+(js|scss)\" --write",
+		"start": "node scripts/serve",
+		"test": "jest --verbose"
 	},
 	"jest": {
 		"testRegex": "src/.*\\.(test.js|jsx)$"

@@ -106,11 +106,21 @@ NODE_ENV=development docker build -t hearts .
 ```
 
 ```sh
-docker run hearts -e NODE_ENV=development -p 3000:3000
+docker run -p 3000:3000 hearts
+```
+
+### SQLite
+
+The application uses SQLite to persist some usage information when AUDITING is
+enabled. If you need access to this data, consider mounting a volume when
+running the application:
+
+````
+mkdir data
+docker run -p 3000:3000 -v data:/usr/src/app/data hearts
 ```
 
 ## Read more
 
-- [Configuration](./docs/CONFIGURATION.md)
-- [FHIR Resources](./docs/RESOURCES.md)
-- [FHIR Queries](./docs/QUERIES.md)
+- [Documentation](./docs/INDEX.md)
+````
