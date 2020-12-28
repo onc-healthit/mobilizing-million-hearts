@@ -2,7 +2,7 @@
 	"name": "hearts-server",
 	"version": "1.2.1",
 	"license": "MIT",
-	"main": "src/main.js",
+	"main": "src/index.js",
 	"scripts": {
 		"lint": "eslint \"src/**/*.js\"",
 		"migrate": "mkdir -p ../data && node_modules/.bin/sequelize db:migrate",
