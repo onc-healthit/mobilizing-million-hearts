@@ -115,7 +115,7 @@ The application uses SQLite to persist some usage information when AUDITING is
 enabled. If you need access to this data, consider mounting a volume when
 running the application:
 
-````
+```
 mkdir data
 docker run -p 3000:3000 -v data:/usr/src/app/data hearts
 ```
@@ -123,4 +123,3 @@ docker run -p 3000:3000 -v data:/usr/src/app/data hearts
 ## Read more
 
 - [Documentation](./docs/INDEX.md)
-````
