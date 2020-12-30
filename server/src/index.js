@@ -32,7 +32,7 @@ module.exports = function main() {
 
 	logger.info(`Initializing ${appName}`);
 
-	logger.info(`Database location: ${path.resolve(__dirname, storage)}`);
+	logger.info(`Database location: ${path.join(process.env.INIT_CWD, storage)}`);
 
 	const fullPath = path.join(__dirname, publicPath);
 
