@@ -1,4 +1,4 @@
-# Future optimization and features the team ahs considered
+# Future optimization and features the team has considered
 
 ## Health Recommendations
 
