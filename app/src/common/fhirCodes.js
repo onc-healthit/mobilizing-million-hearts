@@ -561,7 +561,6 @@ module.exports = {
 				{
 					system: 'http://snomed.info/sct',
 					codes: [
-						'8517006',
 						'230059006',
 						'449868002',
 						'449868002',

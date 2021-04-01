@@ -5418,4 +5418,33 @@ describe('Social history smoker test', () => {
 			expect(conditionInfo.smoker.smokingStatus).toEqual('current');
 		});
 	});
+
+	describe('Patient should not be a smoker', () => {
+		test.only('Patient should not be a smoker from Former smoker and SNOMED code 8517006', () => {
+			const mockRiskService = new RiskService();
+			const observationEntries = [
+				observationFixture({
+					code: {
+						coding: [
+							{
+								system: 'http://e-imo.com/products/problem-it',
+								code: '603273',
+								display: 'Former smoker',
+								userSelected: false,
+							},
+							{
+								system: 'http://snomed.info/sct',
+								code: '8517006',
+								display: 'Ex-smoker (finding)',
+								userSelected: false,
+							},
+						],
+						text: 'Former smoker',
+					},
+				}),
+			];
+			const observationInfo = mockRiskService.parseObservations(observationEntries);
+			expect(observationInfo.smoker.smokingStatus).toEqual('not');
+		});
+	});
 });
