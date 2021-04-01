@@ -5420,7 +5420,7 @@ describe('Social history smoker test', () => {
 	});
 
 	describe('Patient should not be a smoker', () => {
-		test.only('Patient should not be a smoker from Former smoker and SNOMED code 8517006', () => {
+		test('Patient should not be a smoker from Former smoker and SNOMED code 8517006', () => {
 			const mockRiskService = new RiskService();
 			const observationEntries = [
 				observationFixture({
