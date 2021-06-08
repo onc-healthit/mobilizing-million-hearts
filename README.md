@@ -28,7 +28,7 @@ following variables are configurable.
 An example `.env` file might like this:
 
 ```sh
-touch `app/.env`
+touch app/.env
 ```
 
 ```
